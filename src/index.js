@@ -7,17 +7,28 @@ import Benvenuto from './Benvenuto';
 import LoggingButton from './components/Logging';
 import ControlloLogin from './components/ControlloLogin';
 import CaselladiPosta from './components/letturaMessaggi';
+import ListaArticoli from './components/ListaArticoli';
+import FormNome from './components/FormNomi';
+import Prenotazione from './components/Prenotazione';
 
+import Calcolatore from './components/Calcolatore';
+
+import Blog from './blog';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-    <Jobs />
-    <LoggingButton />
-    <ControlloLogin />
-    <Benvenuto utenteAutenticato={true} /> 
-    <CaselladiPosta messaggiNonLetti={['pippo','giovanni','pluto']} />
+   <Prenotazione />
+   <Calcolatore />
+    
+    
+    
+    
+    
+    
+    
+    
    
   </React.StrictMode>
 );

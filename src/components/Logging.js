@@ -1,5 +1,6 @@
 
 import React from "react";
+import Pagina from "./messaggioAvvisi";
 
 class LoggingButton extends React.Component{
     handleClick() {
@@ -13,7 +14,8 @@ class LoggingButton extends React.Component{
       </button>
       
         );
-        
+        <Pagina />
+       
     }
    
   }

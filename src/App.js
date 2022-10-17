@@ -1,127 +1,108 @@
 import "./App.css";
-import { User } from "./User";
-
-import { Variabili
- } from "./components/variables";
-
- import { LoggingButton } from "./components/Logging"
-
-import React from "react";
-
+import { useState } from 'react';
 
 function App() {
 
-  
-  //esempio di variabili 
-const anni = 16;
-const nome = 'pippo'
-const respinto = 'non ACCETTATO'
-const isRed = false; 
-const isOnline = false;
-const isReady = false; 
-const isHacked = false; 
- 
+  //inseriamo una task 
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
- 
-  
-  
+  const handleChange = (event) => {
+      setNewTask(event.target.value);
+  };
 
-  //arrays list
-  const utenti = ["pippo","alex","sergej","william","Peter"];
-
-  const insegnanti = [''];
-
-  const users = [
-
-    {nome: "Pippo", anni: 39},
-    { nome: "Bob", anni: 34 },
-    { nome: "Lim", anni: 23},
-    { nome: "Marek", anni: 21}
-
-  ];
+  const addTask = () => {
+      const newTodoList = [...todoList, newTask];
+      setTodoList(newTodoList);
+  };
 
 
-  const pianeti = [
-    {nome: "Mercurio", isRocketPlanet: true},
-    {nome: "Venere", isRocketPlanet: true},
-    {nome: "Terra", isRocketPlanet: true},
-    {nome: "Marte", isRocketPlanet: true},
-    {nome: "Giove", isRocketPlanet: false},
-    {nome: "Saturno", isRocketPlanet: true},
-    {nome: "Nettuno", isRocketPlanet: true},
-    {nome: "Urano", isRocketPlanet: true},
+  //let age = 0;
+  const [age, setAge] = useState(0);
+
+  const [showText, setShowText] = useState(false);
+  const [textColor, setTextColor ]  = useState(""); 
+  const [count, setCount] = useState(0);
+
+  const aumenta = () => {
+    setCount(count + 1);
+  };
+
+  const decrementa = () => {
+    setCount(count - 1);
+  };
+
+  const azzera = () => {
+    setCount(0);
+  };
+
+  const [viewMessage, setViewMessage] = useState('messaggio');
 
 
-  ];
-  
-
-
-  const programmers = [
-    {
-      nome: "Jack", stack: "java"
-    },
-
-    {
-      nome: "Peter", stack: "PHP"
-    },
-
-    {
-      nome: "Fabius", stack: "html"
-    }
+  const incrementaAnni = () => {
+    setAge(age + 1); 
     
-  ]
-  
+    console.log(age);
+
+  };
+
+  const decrementaAnni = () => {
+    setAge(age - 1); 
+    
+    console.log(age);
+  };
+
+  const [inputValue, setInputValue ] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+
+
+
+  };
+
 
   return (
 
     <div className="App">
-
-            
-    {pianeti.map((pianeta, key) => !pianeta.isRocketPlanet && (
-      <h1>{pianeta.nome}</h1>
-    ))}
-
-
-
-      {anni >= 18  ? <h1>{nome} ha {anni} anni</h1> : <h2>{respinto}</h2>}
-
-      <h1 style={{color: isRed ? "red" : "green"}}>COLORE TESTO </h1>
-
-      <h2>{users.map((user, key) => {
-          return <User nome={user.nome} anni={user.anni} />;
+      <div classNae="addTask">
+      <input onChange={handleChange} />
+      <button onClick={addTask}>Aggiungi Task</button>
+      </div>
+      <div className="list">
+      {todoList.map((cazzo) => {
+        return <h1>{cazzo}</h1>
       })}
+      </div>
 
-        </h2>
+      <button onClick={() => { 
+        setTextColor(textColor === "black" ? "green" : "black");
+        //setShowText(!showText)
 
-        <h3>{programmers.map((programmer, key) => {
-          return <Programmer nome={programmer.nome} stack={programmer.stack} />
-        })}</h3>
+      }}>
+        Nascondi/Mostra
+        </button>
+      <h1 style={{ color: textColor}}>the code Name</h1>
+
+      {age}
+
+      <button onClick={incrementaAnni}>Incrementa</button>
+      <button onClick={decrementaAnni}>Decrementa</button>
+
+      <input type="text" onChange={handleInputChange} />
+      <p class="blocco">{inputValue }</p>
+
+      <fieldset>
+        <legend>Conta</legend>
+        <button onClick={aumenta}>Aumenta</button>
+        <button onClick={decrementa}>Decrementa</button>
+        <button onClick={azzera}>Azzera</button>
+        <p>{count}</p>
+      </fieldset>
     </div>
-  );
+  ); 
+
+
 }
 
-
-
-
-
-
-
-
-
-const Programmer = (props) => {
-  return (
-    <div>
-        {props.nome} {props.stack}
-    </div>
-  )
-
-
-
-
-
-}
-
-
-
-
-export default App; 
+export default App;

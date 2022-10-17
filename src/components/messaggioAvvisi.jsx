@@ -18,7 +18,28 @@ class Pagina extends React.Component {
             this
         );
     }
+
+    handleToggleClick() {
+        this.setState(state => ({
+            mostraAvviso: !state.mostraAvviso,
+        }));
+    }
+
+    render() {
+        return (
+            <div>
+                <MessaggioAvviso
+                attenzione={this.state.mostraAvviso}
+            />
+            <button onClick={this.handleToggleClick}>
+                {this.state.mostraAvviso ? 'Nascondi' : 'Mostra'}
+            </button>
+            </div>
+        );
+    }
 }
+
+export default Pagina 
 
 
 

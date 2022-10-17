@@ -13,4 +13,19 @@ body {
 .name {
   color: red; 
 }
+.li {
+  display:flex; 
+  align-items: flex-end;
+}
 
+.blocco {
+  font-weight: 800;
+  margin-left: 10px;
+  padding: 1rem; 
+  
+}
+
+.addTask {
+  padding: 20px;
+  margin-bottom: 20px;
+}
